@@ -238,7 +238,7 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-4 mt-8">Education & Experience</h3>
                 <ul className="space-y-4">
                   <li className="border-l-2 border-primary pl-4 py-1">
-                    <div className="flex items-center space-x-2 font-medium">
+                    <div className="font-medium">
                       <span className="font-semibold">BSc in Computer Science</span> - Northeastern University
                     </div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">Sep 2024 - Present</div>
