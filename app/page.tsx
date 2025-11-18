@@ -175,8 +175,8 @@ export default function Home() {
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-purple-600 opacity-20 blur-xl"></div>
                   <div className="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl">
                     <Image
-                      src="/AudreyHeadshot.jpg?height=256&width=256"
-                      alt="Your Profile"
+                      src="/AudreyNg-Headshot.jpg?height=256&width=256"
+                      alt="Audrey Ng Headshot"
                       fill
                       className="object-cover"
                     />
@@ -223,8 +223,7 @@ export default function Home() {
               <div className="order-2 md:order-1">
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   I'm a passionate software engineer with 2+ years of experience building web applications and solving
-                  complex problems. I specialize in front-end development with React and TypeScript, but I'm also
-                  proficient in back-end technologies.
+                  complex problems. I specialize in full-stack development.
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   My journey in software development began during my junior year of high school when I learned web development 
@@ -245,27 +244,21 @@ export default function Home() {
                   </li>
                   <li className="border-l-2 border-primary pl-4 py-1">
                     <div className="font-medium">
-                      <span className="font-semibold">Technology and Innovation Intern</span> - Siemens Digital Industries Software
+                      <span className="font-semibold">Software Engineer Intern</span> - Microsoft
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">Jun - Aug 2025</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Jan - Jun 2026</div>
                   </li>
                   <li className="border-l-2 border-primary pl-4 py-1">
                     <div className="font-medium">
-                      <span className="font-semibold">Full Stack Developer Intern</span> - LSQ
+                      <span className="font-semibold">Software Engineer Intern</span> - Siemens
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">Mar 2025 - Present</div>
-                  </li>
-                  <li className="border-l-2 border-primary pl-4 py-1">
-                    <div className="font-medium">
-                      <span className="font-semibold">Artificial Intelligence Development Intern</span> - GAWNE
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">Feb - Apr 2025</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Jun - Dec 2025</div>
                   </li>
                   <li className="border-l-2 border-primary pl-4 py-1">
                     <div className="font-medium">
                       <span className="font-semibold">Software Engineer</span> - Northeastern SGA
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">Jan 2025 - Present</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">Jan - Oct 2025</div>
                   </li>
                   <li className="border-l-2 border-primary pl-4 py-1">
                     <div className="font-medium">
@@ -279,8 +272,8 @@ export default function Home() {
                 <div className="relative w-64 h-64 md:w-80 md:h-80">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-purple-600 opacity-20 blur-xl"></div>
                   <img
-                    src="/AudreyHeadshot.jpg?height=320&width=320"
-                    alt="John Doe"
+                    src="/AudreyNg-Headshot.jpg?height=320&width=320"
+                    alt="Audrey Ng Headshot"
                     className="relative z-10 rounded-full object-cover w-full h-full border-4 border-white dark:border-gray-800"
                   />
                 </div>
