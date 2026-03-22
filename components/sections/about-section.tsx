@@ -123,7 +123,7 @@ export default function AboutSection() {
           <div className="relative w-64 h-64 md:w-80 md:h-80">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-purple-600 opacity-20 blur-xl"></div>
             <img
-              src="/AudreyNg-Headshot.jpg?height=320&width=320"
+              src="images/AudreyNg-Headshot.jpg?height=320&width=320"
               alt="Audrey Ng Headshot"
               className="relative z-10 rounded-full object-cover w-full h-full border-4 border-gray-800"
             />

@@ -33,7 +33,7 @@ export default function HomeSection({ onNavigateAction, onCubeClickAction }: Hom
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-purple-600 opacity-20 blur-xl"></div>
             <div className="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-gray-800 shadow-xl">
               <Image
-                src="/AudreyNg-Headshot.jpg?height=256&width=256"
+                src="images/AudreyNg-Headshot.jpg?height=256&width=256"
                 alt="Audrey Ng Headshot"
                 fill
                 className="object-cover"

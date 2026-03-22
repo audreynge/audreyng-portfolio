@@ -5,10 +5,19 @@ import ProjectCard from "@/components/project-card"
 
 const projects = [
   {
+    title: "Copyright Infringement Detector",
+    description: 
+      "This project was made in an effort to explore the issue of small arts businesses' content being stolen and reuploaded as a cheaper product on other third party sites.",
+    tags: ["Python", "TypeScript", "Puppeteer", "Cheerio", "Transformers", "PyTorch"],
+    imageUrl: "/images/CopyrightInfringementDetector.png",
+    demoUrl: "https://github.com/audreynge/copyright_infringement_detection",
+    repoUrl: "https://github.com/audreynge/copyright_infringement_detection"
+  },
+  {
     title: "Lumen",
     description:
       "Platform that finds the safest and quickest path through neighborhoods, making it easier for tourists, travelers, and students.",
-    tags: ["Express.js", "Flask", "Leaflet", "Next.js", "OSMnx", "React.js", "Tailwind CSS", "Tesseract"],
+    tags: ["Express.js", "Flask", "Leaflet", "Next.js", "React.js", "Tailwind CSS", "Tesseract"],
     imageUrl: "https://i.ytimg.com/an_webp/lcP4n6n1Ke8/mqdefault_6s.webp?du=3000&sqp=CJLJ_s0G&rs=AOn4CLAt8BSPRPs4jNSsd6OhWy1zQ0r9pw",
     demoUrl: "https://www.youtube.com/watch?v=lcP4n6n1Ke8&ab_channel=AudreyN",
     repoUrl: "https://github.com/audreynge/Lumen",
@@ -17,7 +26,7 @@ const projects = [
     title: "Inquisiv.",
     description:
       "Streamlines the dropshipping process by identifying top-trending products and creating customized ad content with NLP-based sentiment analysis and generative AI models.",
-    tags: ["Bootstrap", "Flask", "React.js", "NLTK", "PyTorch", "Sckit-learn", "Tailwind CSS", "TanStack Query"],
+    tags: ["Bootstrap", "Flask", "React.js", "PyTorch", "Sckit-learn", "Tailwind CSS", "TanStack Query"],
     imageUrl: "https://i.ytimg.com/vi/0Oie1cL4HYI/hqdefault.jpg?sqp=-oaymwFBCNACELwBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYACnAWKAgwIABABGCYgZSg4MA8=&rs=AOn4CLAzbb2_mQulP6bwihdcGmzAEKt1ng",
     demoUrl: "https://devpost.com/software/inquisiv",
     repoUrl: "https://github.com/Sadfahlsdj/Finhacks_2025.git",
