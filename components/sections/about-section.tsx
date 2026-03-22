@@ -88,8 +88,7 @@ export default function AboutSection() {
           </p>
           <p className="text-gray-300 mb-4">
             My journey in software development began during my junior year of high school when I learned web
-            development myself through The Odin Project, where I discovered my passion for creating intuitive and
-            efficient user interfaces. Since then, I&apos;ve worked on various projects, ranging from personal websites to
+            development myself through <a href="https://www.theodinproject.com/" target="_blank" rel="noopener noreferrer" className="underline">The Odin Project</a>, where I discovered my passion for bringing ideas to life through code. Since then, I&apos;ve worked on various projects, ranging from personal websites to
             complex applications for hackathons, startups, and companies.
           </p>
           <p className="text-gray-300 mb-4">
