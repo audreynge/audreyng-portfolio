@@ -6,12 +6,12 @@ import type { Group } from "three"
 import { Text } from "@react-three/drei"
 
 const COLORS = {
-  front: "#ff5800", // Orange
-  back: "#ff0000",  // Red
-  left: "#00ff00",  // Green
-  right: "#0000ff", // Blue
-  top: "#ffffff",   // White
-  bottom: "#ffff00",// Yellow
+  front: "#ff6f00", // Orange
+  back: "#c41e3a", // Red
+  left: "#22c55e", // Green (brighter)
+  right: "#0051ba", // Blue
+  top: "#f8f8f8", // White
+  bottom: "#ffd500", // Yellow
 }
 
 const LABELS = {
@@ -24,23 +24,26 @@ const LABELS = {
 }
 
 type RubiksCubeProps = {
-  onFaceClick: (face: string) => void
+  onFaceClickAction: (face: string) => void
 }
 
-export default function RubiksCube({ onFaceClick }: RubiksCubeProps) {
+export default function RubiksCube({ onFaceClickAction }: RubiksCubeProps) {
   const groupRef = useRef<Group>(null)
 
   // rotate cube
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.1
+      const t = state.clock.getElapsedTime()
+      groupRef.current.rotation.y = t * 0.16
+      groupRef.current.rotation.x = Math.sin(t * 0.55) * 0.08
+      groupRef.current.position.y = Math.sin(t * 0.9) * 0.06
     }
   })
 
   const handleClick = (face: string) => {
     console.log(`Clicked on face: ${face}`)
-    if (onFaceClick) {
-      onFaceClick(face)
+    if (onFaceClickAction) {
+      onFaceClickAction(face)
     }
   }
 
@@ -70,47 +73,164 @@ export default function RubiksCube({ onFaceClick }: RubiksCubeProps) {
     if (face === "bottom" && y === 0) return COLORS.bottom
     if (face === "front" && z === 2) return COLORS.front
     if (face === "back" && z === 0) return COLORS.back
-    return "#222222" // Dark color for inner faces
+    return "#0f1115" // Dark core color for inner faces
+  }
+
+  const getFaceFromNormal = (normal?: { x: number; y: number; z: number }) => {
+    if (!normal) return null
+    if (normal.z < -0.5) return "back"
+    if (normal.z > 0.5) return "front"
+    if (normal.x < -0.5) return "left"
+    if (normal.x > 0.5) return "right"
+    if (normal.y > 0.5) return "top"
+    if (normal.y < -0.5) return "bottom"
+    return null
+  }
+
+  const stickerSize = cubeSize * 0.84
+  const stickerOffset = cubeSize / 2 + 0.009
+
+  const renderSticker = (
+    stickerFace: "right" | "left" | "top" | "bottom" | "front" | "back",
+    color: string,
+    key: string,
+  ) => {
+    const common = (
+      <meshStandardMaterial color={color} roughness={0.34} metalness={0.03} />
+    )
+
+    if (stickerFace === "right") {
+      return (
+        <mesh
+          key={key}
+          position={[stickerOffset, 0, 0]}
+          rotation={[0, Math.PI / 2, 0]}
+          onClick={(e) => {
+            e.stopPropagation()
+            handleClick("right")
+          }}
+        >
+          <planeGeometry args={[stickerSize, stickerSize]} />
+          {common}
+        </mesh>
+      )
+    }
+    if (stickerFace === "left") {
+      return (
+        <mesh
+          key={key}
+          position={[-stickerOffset, 0, 0]}
+          rotation={[0, -Math.PI / 2, 0]}
+          onClick={(e) => {
+            e.stopPropagation()
+            handleClick("left")
+          }}
+        >
+          <planeGeometry args={[stickerSize, stickerSize]} />
+          {common}
+        </mesh>
+      )
+    }
+    if (stickerFace === "top") {
+      return (
+        <mesh
+          key={key}
+          position={[0, stickerOffset, 0]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          onClick={(e) => {
+            e.stopPropagation()
+            handleClick("top")
+          }}
+        >
+          <planeGeometry args={[stickerSize, stickerSize]} />
+          {common}
+        </mesh>
+      )
+    }
+    if (stickerFace === "bottom") {
+      return (
+        <mesh
+          key={key}
+          position={[0, -stickerOffset, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+          onClick={(e) => {
+            e.stopPropagation()
+            handleClick("bottom")
+          }}
+        >
+          <planeGeometry args={[stickerSize, stickerSize]} />
+          {common}
+        </mesh>
+      )
+    }
+    if (stickerFace === "front") {
+      return (
+        <mesh
+          key={key}
+          position={[0, 0, stickerOffset]}
+          onClick={(e) => {
+            e.stopPropagation()
+            handleClick("front")
+          }}
+        >
+          <planeGeometry args={[stickerSize, stickerSize]} />
+          {common}
+        </mesh>
+      )
+    }
+    return (
+      <mesh
+        key={key}
+        position={[0, 0, -stickerOffset]}
+        rotation={[0, Math.PI, 0]}
+        onClick={(e) => {
+          e.stopPropagation()
+          handleClick("back")
+        }}
+      >
+        <planeGeometry args={[stickerSize, stickerSize]} />
+        {common}
+      </mesh>
+    )
   }
 
   const textOffset = 0.5
 
   return (
-    <group ref={groupRef} scale={[0.7, 0.7, 0.7]}>
+    <group ref={groupRef} scale={[0.76, 0.76, 0.76]}>
       {/* generate 3x3x3 grid of cubes */}
       {[0, 1, 2].map((x) =>
         [0, 1, 2].map((y) =>
           [0, 1, 2].map((z) => {
             if (isOnFace(x, y, z)) {
               return (
-                <mesh
-                  key={`${x}-${y}-${z}`}
-                  position={getPosition(x, y, z)}
-                  onClick={(e) => {
-                    e.stopPropagation()
+                <group key={`${x}-${y}-${z}`} position={getPosition(x, y, z)}>
+                  <mesh
+                    castShadow
+                    receiveShadow
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      const face = getFaceFromNormal(e.face?.normal)
+                      if (face) handleClick(face)
+                    }}
+                  >
+                    <boxGeometry args={[cubeSize, cubeSize, cubeSize]} />
+                    <meshPhysicalMaterial
+                      color="#111315"
+                      roughness={0.58}
+                      metalness={0.08}
+                      clearcoat={0.36}
+                      clearcoatRoughness={0.46}
+                    />
+                  </mesh>
 
-                    const normal = e.face?.normal
-                    if (!normal) return
-
-                    let face = "front"
-                    if (normal.z < -0.5) face = "back"
-                    else if (normal.z > 0.5) face = "front"
-                    else if (normal.x < -0.5) face = "left"
-                    else if (normal.x > 0.5) face = "right"
-                    else if (normal.y > 0.5) face = "top"
-                    else if (normal.y < -0.5) face = "bottom"
-
-                    handleClick(face)
-                  }}
-                >
-                  <boxGeometry args={[cubeSize, cubeSize, cubeSize]} />
-                  <meshStandardMaterial attach="material-0" color={getFaceColor(x, y, z, "right")} />
-                  <meshStandardMaterial attach="material-1" color={getFaceColor(x, y, z, "left")} />
-                  <meshStandardMaterial attach="material-2" color={getFaceColor(x, y, z, "top")} />
-                  <meshStandardMaterial attach="material-3" color={getFaceColor(x, y, z, "bottom")} />
-                  <meshStandardMaterial attach="material-4" color={getFaceColor(x, y, z, "front")} />
-                  <meshStandardMaterial attach="material-5" color={getFaceColor(x, y, z, "back")} />
-                </mesh>
+                  {x === 2 && renderSticker("right", getFaceColor(x, y, z, "right"), `r-${x}-${y}-${z}`)}
+                  {x === 0 && renderSticker("left", getFaceColor(x, y, z, "left"), `l-${x}-${y}-${z}`)}
+                  {y === 2 && renderSticker("top", getFaceColor(x, y, z, "top"), `t-${x}-${y}-${z}`)}
+                  {y === 0 && renderSticker("bottom", getFaceColor(x, y, z, "bottom"), `b-${x}-${y}-${z}`)}
+                  {z === 2 && renderSticker("front", getFaceColor(x, y, z, "front"), `f-${x}-${y}-${z}`)}
+                  {z === 0 && renderSticker("back", getFaceColor(x, y, z, "back"), `bk-${x}-${y}-${z}`)}
+                </group>
               )
             }
             return null
@@ -124,6 +244,8 @@ export default function RubiksCube({ onFaceClick }: RubiksCubeProps) {
         font="/fonts/InterDisplay-Bold.ttf"
         fontSize={0.25}
         color="#ffffff"
+        outlineWidth={0.018}
+        outlineColor="#0f1115"
         anchorX="center"
         anchorY="middle"
       >
@@ -136,6 +258,8 @@ export default function RubiksCube({ onFaceClick }: RubiksCubeProps) {
         font="/fonts/InterDisplay-Bold.ttf"
         fontSize={0.25}
         color="#ffffff"
+        outlineWidth={0.018}
+        outlineColor="#0f1115"
         anchorX="center"
         anchorY="middle"
       >
@@ -148,6 +272,8 @@ export default function RubiksCube({ onFaceClick }: RubiksCubeProps) {
         font="/fonts/InterDisplay-Bold.ttf"
         fontSize={0.25}
         color="#ffffff"
+        outlineWidth={0.018}
+        outlineColor="#0f1115"
         anchorX="center"
         anchorY="middle"
       >
@@ -160,6 +286,8 @@ export default function RubiksCube({ onFaceClick }: RubiksCubeProps) {
         font="/fonts/InterDisplay-Bold.ttf"
         fontSize={0.25}
         color="#ffffff"
+        outlineWidth={0.018}
+        outlineColor="#0f1115"
         anchorX="center"
         anchorY="middle"
       >
@@ -172,6 +300,8 @@ export default function RubiksCube({ onFaceClick }: RubiksCubeProps) {
         font="/fonts/InterDisplay-Bold.ttf"
         fontSize={0.25}
         color="#000000"
+        outlineWidth={0.015}
+        outlineColor="#f9fafb"
         anchorX="center"
         anchorY="middle"
       >
@@ -184,6 +314,8 @@ export default function RubiksCube({ onFaceClick }: RubiksCubeProps) {
         font="/fonts/InterDisplay-Bold.ttf"
         fontSize={0.25}
         color="#000000"
+        outlineWidth={0.015}
+        outlineColor="#f9fafb"
         anchorX="center"
         anchorY="middle"
       >
