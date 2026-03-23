@@ -8,8 +8,8 @@ import { Text } from "@react-three/drei"
 const COLORS = {
   front: "#ff6f00", // Orange
   back: "#c41e3a", // Red
-  left: "#22c55e", // Green (brighter)
-  right: "#0051ba", // Blue
+  left: "#0051ba", // Blue
+  right: "#22c55e", // Green
   top: "#f8f8f8", // White
   bottom: "#ffd500", // Yellow
 }
