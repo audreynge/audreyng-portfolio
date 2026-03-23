@@ -120,13 +120,31 @@ export default function AboutSection() {
           </ul>
         </div>
         <div className="order-1 md:order-2 flex justify-center">
-          <div className="relative w-64 h-64 md:w-80 md:h-80">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-purple-600 opacity-20 blur-xl"></div>
-            <img
-              src="images/AudreyNg-Headshot.jpg?height=320&width=320"
-              alt="Audrey Ng Headshot"
-              className="relative z-10 rounded-full object-cover w-full h-full border-4 border-gray-800"
-            />
+          <div className="w-64 md:w-80 space-y-12">
+            <div className="relative w-64 h-64 md:w-80 md:h-80">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-purple-600 opacity-20 blur-xl"></div>
+              <img
+                src="images/AudreyNg-Headshot.jpg?height=320&width=320"
+                alt="Audrey Ng Headshot"
+                className="relative z-10 rounded-full object-cover w-full h-full border-4 border-gray-800"
+              />
+            </div>
+            <div>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                disablePictureInPicture
+                preload="metadata"
+                className="w-full rounded-lg border border-gray-700 pointer-events-none"
+                aria-label="Speedcubing video"
+              >
+                <source src="/videos/speedcubing.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p className="text-sm text-gray-300 mt-2 text-center">I average ~11 seconds on the 3x3 ⚡️</p>
+            </div>
           </div>
         </div>
       </div>
