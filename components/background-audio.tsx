@@ -15,7 +15,11 @@ export default function BackgroundAudio({ src }: BackgroundAudioProps) {
   const analyserRef = useRef<AnalyserNode | null>(null)
   const sourceRef = useRef<MediaElementAudioSourceNode | null>(null)
   const dataRef = useRef<Uint8Array<ArrayBuffer> | null>(null)
-  const [isMuted, setIsMuted] = useState(true)
+  const [isMuted, setIsMuted] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true
+    const saved = window.localStorage.getItem("bg-audio-muted")
+    return saved ? saved === "true" : true
+  })
   const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
@@ -25,6 +29,9 @@ export default function BackgroundAudio({ src }: BackgroundAudioProps) {
     audio.loop = true
     audio.volume = 0.35
     audio.muted = isMuted
+    audio.autoplay = true
+    audio.setAttribute("playsinline", "true")
+    audio.setAttribute("webkit-playsinline", "true")
 
     const setupAudioGraph = () => {
       if (!audioContextRef.current) {
@@ -55,21 +62,47 @@ export default function BackgroundAudio({ src }: BackgroundAudioProps) {
             // background audio can continue even if analyser resume is blocked.
           })
         }
+        return true
       } catch {
         setIsPlaying(false)
+        return false
       }
     }
 
-    tryPlay()
-
-    const handleFirstInteraction = () => {
-      void tryPlay()
+    const removeUnlockListeners = () => {
+      window.removeEventListener("pointerdown", handleUnlock)
+      window.removeEventListener("touchstart", handleUnlock)
+      window.removeEventListener("click", handleUnlock)
+      window.removeEventListener("keydown", handleUnlock)
     }
 
-    window.addEventListener("pointerdown", handleFirstInteraction, { once: true })
+    const handleUnlock = () => {
+      void tryPlay().then((ok) => {
+        if (ok) removeUnlockListeners()
+      })
+    }
+
+    void tryPlay().then((ok) => {
+      if (!ok) {
+        // Mobile browsers may require a user gesture. Keep listening until unlocked.
+        window.addEventListener("pointerdown", handleUnlock, { passive: true })
+        window.addEventListener("touchstart", handleUnlock, { passive: true })
+        window.addEventListener("click", handleUnlock, { passive: true })
+        window.addEventListener("keydown", handleUnlock)
+      }
+    })
+
+    const onPlay = () => setIsPlaying(true)
+    const onPause = () => setIsPlaying(false)
+    audio.addEventListener("play", onPlay)
+    audio.addEventListener("pause", onPause)
+    audio.addEventListener("ended", onPause)
 
     return () => {
-      window.removeEventListener("pointerdown", handleFirstInteraction)
+      removeUnlockListeners()
+      audio.removeEventListener("play", onPlay)
+      audio.removeEventListener("pause", onPause)
+      audio.removeEventListener("ended", onPause)
       if (animationRef.current) cancelAnimationFrame(animationRef.current)
       if (audioContextRef.current) void audioContextRef.current.close()
     }
@@ -222,8 +255,6 @@ export default function BackgroundAudio({ src }: BackgroundAudioProps) {
 
     const nextMuted = !isMuted
     setIsMuted(nextMuted)
-    audio.muted = nextMuted
-
     if (!nextMuted && audio.paused) {
       try {
         await audio.play()

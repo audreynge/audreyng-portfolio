@@ -83,7 +83,7 @@ export default function AboutSection() {
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div className="order-2 md:order-1">
           <p className="text-gray-300 mb-4">
-            I&apos;m a passionate software engineer with 3+ years of experience building web applications and solving
+            I&apos;m a passionate software engineer born and raised in Queens, NY with 3+ years of experience building web applications and solving
             complex problems. I specialize in full-stack development and agentic AI systems.
           </p>
           <p className="text-gray-300 mb-4">
