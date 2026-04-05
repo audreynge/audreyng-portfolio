@@ -117,41 +117,6 @@ export default function HomeSection() {
               Contact Me
             </Button>
           </div>
-          <div className="mt-10 max-w-2xl space-y-6 text-gray-300 text-sm md:text-base text-left">
-            <section>
-              <h3 className="text-lg font-semibold text-white mb-2">What I Build</h3>
-              <p>
-                I enjoy shipping full-stack products from idea to deployment. That includes building responsive frontends in React and
-                Next.js, designing backend APIs, and connecting data flows so features stay reliable under real usage. My recent work spans
-                internal platforms, startup products, and AI-assisted user experiences, with an emphasis on maintainable code and fast iteration.
-              </p>
-            </section>
-            <section>
-              <h3 className="text-lg font-semibold text-white mb-2">How I Work</h3>
-              <p>
-                I care about the details that make software usable at scale: strong typing, sensible abstractions, clear monitoring, and
-                thoughtful UX decisions. I like to start with product goals, break them into technical milestones, and then deliver in small
-                increments so improvements are visible quickly. I also document decisions so teams can extend systems without rebuilding core logic.
-              </p>
-            </section>
-            <section>
-              <h3 className="text-lg font-semibold text-white mb-2">Current Focus</h3>
-              <p>
-                Right now, I&apos;m focused on full-stack engineering and agentic AI systems. I&apos;m especially interested in how AI can improve
-                developer workflows, operational tooling, and customer support without sacrificing reliability. Outside of internships and coursework,
-                I continue building side projects that help me experiment with new frameworks, testing strategies, and deployment patterns.
-              </p>
-            </section>
-            <section>
-              <h3 className="text-lg font-semibold text-white mb-2">Explore More</h3>
-              <p>
-                You can learn more about my background on the <Link href="/about" className="underline hover:text-white">About</Link> page,
-                review production-focused case studies on <Link href="/projects" className="underline hover:text-white">Projects</Link>, check my
-                technical toolkit on <Link href="/skills" className="underline hover:text-white">Skills</Link>, or reach out directly through
-                <Link href="/contact" className="underline hover:text-white"> Contact</Link>. I&apos;m always open to collaborating on meaningful products.
-              </p>
-            </section>
-          </div>
         </div>
         <div className="order-1 md:order-2 w-full h-[300px] md:h-[400px] bg-gray-800 rounded-lg relative">
           <CubeScene onFaceClickAction={handleCubeClickAction} />
