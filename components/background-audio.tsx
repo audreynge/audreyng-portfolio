@@ -51,17 +51,22 @@ export default function BackgroundAudio({ src }: BackgroundAudioProps) {
       }
     }
 
+    const ensureAudioGraphRunning = async () => {
+      setupAudioGraph()
+      if (audioContextRef.current?.state === "suspended") {
+        try {
+          await audioContextRef.current.resume()
+        } catch {
+          // on mobile resume can fail until a trusted user gesture
+        }
+      }
+      return audioContextRef.current?.state === "running"
+    }
+
     const tryPlay = async () => {
       try {
         await audio.play()
         setIsPlaying(true)
-        setupAudioGraph()
-        if (audioContextRef.current?.state === "suspended") {
-          void audioContextRef.current.resume().catch(() => {
-            // Browser may still require a gesture for Web Audio;
-            // background audio can continue even if analyser resume is blocked.
-          })
-        }
         return true
       } catch {
         setIsPlaying(false)
@@ -77,14 +82,22 @@ export default function BackgroundAudio({ src }: BackgroundAudioProps) {
     }
 
     const handleUnlock = () => {
-      void tryPlay().then((ok) => {
-        if (ok) removeUnlockListeners()
-      })
+      void (async () => {
+        const played = await tryPlay()
+        const graphReady = await ensureAudioGraphRunning()
+        if (played && graphReady) removeUnlockListeners()
+      })()
     }
 
     void tryPlay().then((ok) => {
       if (!ok) {
         // Mobile browsers may require a user gesture. Keep listening until unlocked.
+        window.addEventListener("pointerdown", handleUnlock, { passive: true })
+        window.addEventListener("touchstart", handleUnlock, { passive: true })
+        window.addEventListener("click", handleUnlock, { passive: true })
+        window.addEventListener("keydown", handleUnlock)
+      } else {
+        // Playback may succeed while Web Audio remains suspended on mobile.
         window.addEventListener("pointerdown", handleUnlock, { passive: true })
         window.addEventListener("touchstart", handleUnlock, { passive: true })
         window.addEventListener("click", handleUnlock, { passive: true })
@@ -261,6 +274,31 @@ export default function BackgroundAudio({ src }: BackgroundAudioProps) {
         setIsPlaying(true)
       } catch {
         setIsPlaying(false)
+      }
+    }
+
+    if (!nextMuted) {
+      if (!audioContextRef.current) {
+        const context = new AudioContext()
+        const analyser = context.createAnalyser()
+        analyser.fftSize = 256
+        analyser.smoothingTimeConstant = 0.5
+
+        const source = context.createMediaElementSource(audio)
+        source.connect(analyser)
+        analyser.connect(context.destination)
+
+        audioContextRef.current = context
+        analyserRef.current = analyser
+        sourceRef.current = source
+        dataRef.current = new Uint8Array(new ArrayBuffer(analyser.frequencyBinCount))
+      }
+      if (audioContextRef.current?.state === "suspended") {
+        try {
+          await audioContextRef.current.resume()
+        } catch {
+          // iOS Safari can still block resume in non-trusted contexts.
+        }
       }
     }
   }
