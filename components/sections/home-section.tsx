@@ -17,7 +17,7 @@ const CubeScene = dynamic(() => import("@/components/cube-scene"), {
   ),
 })
 
-const ROLE_ROTATION = ["Software Engineer", "CS @ Northeastern", "Speedcuber"]
+const ROLE_ROTATION = ["Software Engineer", "CS @ Northeastern", "Speedcuber", "Photographer"]
 
 export default function HomeSection() {
   const router = useRouter()
@@ -98,8 +98,8 @@ export default function HomeSection() {
               />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center md:text-left">
-            Hi, I&apos;m <span className="text-primary">Audrey</span>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-center md:text-left">
+            Hi, I&apos;m <span className="text-primary">Audrey Ng</span>
           </h1>
           <h2 className="text-xl md:text-2xl mb-6 text-center md:text-left min-h-8">
             <span className="inline-flex items-center rounded-md border border-violet-500/35 bg-violet-950/30 px-3 py-1.5 font-mono text-violet-300 shadow-[0_0_14px_rgba(167,139,250,0.18)]">

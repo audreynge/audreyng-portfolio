@@ -10,7 +10,7 @@ const siteUrl = getSiteUrl()
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Audrey Ng | Full-Stack Software Engineer Portfolio",
+    default: "Audrey Ng",
     template: "%s | Audrey Ng",
   },
   description: "Portfolio of Audrey Ng - software engineering projects, experience, and technical skills.",
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "Audrey Ng | Software Engineer",
+    title: "Audrey Ng",
     description: "Portfolio of Audrey Ng - software engineering projects, experience, and technical skills.",
     siteName: "Audrey Ng Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Audrey Ng | Software Engineer",
+    title: "Audrey Ng",
     description: "Portfolio of Audrey Ng - software engineering projects, experience, and technical skills.",
   },
 }

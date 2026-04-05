@@ -96,6 +96,22 @@ export default function AboutSection() {
             consistent, and finishing what you start. Outside of coding, I enjoy speedcubing, photography, and taking
             walks!
           </p>
+          <div className="md:hidden mb-6">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              preload="metadata"
+              className="w-full rounded-lg border border-gray-700 pointer-events-none"
+              aria-label="Speedcubing video"
+            >
+              <source src="/videos/speedcubing.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p className="text-sm text-gray-300 mt-2 text-center">I average ~11 seconds on the 3x3 ⚡️</p>
+          </div>
           <h3 className="text-xl font-semibold mb-4 mt-8">Education & Experience</h3>
           <ul className="space-y-4">
             {experienceItems.map((item) => (
@@ -129,7 +145,7 @@ export default function AboutSection() {
                 className="relative z-10 rounded-full object-cover w-full h-full border-4 border-gray-800"
               />
             </div>
-            <div>
+            <div className="hidden md:block">
               <video
                 autoPlay
                 loop
