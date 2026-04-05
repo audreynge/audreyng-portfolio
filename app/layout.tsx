@@ -3,16 +3,20 @@ import type { Metadata } from "next"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import SiteShell from "@/components/site-shell"
+import { getSiteUrl } from "@/lib/site-url"
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001"
+const siteUrl = getSiteUrl()
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Audrey Ng | Software Engineer",
+    default: "Audrey Ng | Full-Stack Software Engineer Portfolio",
     template: "%s | Audrey Ng",
   },
   description: "Portfolio of Audrey Ng - software engineering projects, experience, and technical skills.",
+  icons: {
+    apple: "/apple-icon",
+  },
   alternates: {
     canonical: "/",
   },
