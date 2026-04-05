@@ -86,7 +86,7 @@ export default function HomeSection() {
       className="min-h-[calc(100vh-10rem)] flex flex-col items-center justify-center"
     >
       <div className="grid md:grid-cols-2 gap-12 items-center w-full max-w-6xl mx-auto">
-        <div className="order-2 md:order-1 flex flex-col items-center md:items-start">
+        <div className="order-1 md:order-1 flex flex-col items-center md:items-start">
           <div className="relative w-48 h-48 md:w-64 md:h-64 mb-8">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-purple-600 opacity-20 blur-xl"></div>
             <div className="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-gray-800 shadow-xl">
@@ -118,7 +118,7 @@ export default function HomeSection() {
             </Button>
           </div>
         </div>
-        <div className="order-1 md:order-2 w-full h-[300px] md:h-[400px] bg-gray-800 rounded-lg relative">
+        <div className="order-2 md:order-2 w-full h-[300px] md:h-[400px] bg-gray-800 rounded-lg relative">
           <CubeScene onFaceClickAction={handleCubeClickAction} />
           <div className="absolute bottom-4 left-0 right-0 text-center text-sm font-medium bg-gray-800/70 text-gray-100 py-2 rounded-md mx-4">
             Click on different faces of the cube to navigate
