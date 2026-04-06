@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   },
   description: "Portfolio of Audrey Ng - software engineering projects, experience, and technical skills.",
   icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
     apple: "/apple-icon",
   },
   alternates: {
