@@ -12,12 +12,12 @@ type PhotoItem = {
 
 const photos: PhotoItem[] = [
   {
-    src: "/images/photography/DSC_9272.jpg",
+    src: "/images/photography/DSC_9272.JPG",
     location: "Seattle, Washington",
     date: "Jan. 2026",
   },
   {
-    src: "/images/photography/DSC_9259.jpg",
+    src: "/images/photography/DSC_9259.JPG",
     location: "Seattle, Washington",
     date: "Jan. 2026",
   },
@@ -27,7 +27,7 @@ const photos: PhotoItem[] = [
     date: "Jan. 2026",
   },
   {
-    src: "/images/photography/IMG_4143.jpg",
+    src: "/images/photography/IMG_4143.JPG",
     location: "Seattle, Washington",
     date: "Jan. 2026",
   },
