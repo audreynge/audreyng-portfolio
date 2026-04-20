@@ -56,9 +56,7 @@ export default function PhotographySection() {
         <div className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl font-bold">Photography</h2>
           <p className="mt-3 text-gray-300">
-            I&apos;ve been taking photos on and off since 2018. I started by photographing Rubik&apos;s cubes (you can find on
-            @cubeogram on Instagram), and now I mostly shoot street photography with a Nikon D7100 / iPhone 16 Pro. I&apos;m still continuing to grow my skills, planning
-            to upgrade to a Fujifilm X-T5 eventually. I aim to turn photography into a side hustle one day 📷
+            I&apos;ve been taking photos on and off since 2018. I mostly shoot street photography with a Nikon D7100 / iPhone 16 Pro.
           </p>
         </div>
 

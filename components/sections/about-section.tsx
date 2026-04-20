@@ -17,7 +17,7 @@ const experienceItems: Array<{
   {
     title: "Bachelor of Science in Computer Science",
     organization: "Northeastern University",
-    period: "Sep. 2024 - Apr. 2028",
+    period: "Sep. 2024 - May. 2028",
     icon: GraduationCap,
     companyLogo: {
       src: "https://logos.hunter.io/northeastern.edu",
@@ -38,8 +38,19 @@ const experienceItems: Array<{
   {
     title: "Software Engineer Intern",
     organization: "Microsoft",
-    period: "Jan. 2026 - Jun. 2026",
-    description: "Dynamics 365 Field Service & Core AI",
+    period: "Apr. 2026 - Jun. 2026",
+    description: "Azure Resource Graph",
+    icon: Briefcase,
+    companyLogo: {
+      src: "https://logos.hunter.io/microsoft.com",
+      alt: "Microsoft logo",
+    },
+  },
+  {
+    title: "Software Engineer Intern",
+    organization: "Microsoft",
+    period: "Jan. 2026 - Apr. 2026",
+    description: "Dynamics 365 Field Service",
     icon: Briefcase,
     companyLogo: {
       src: "https://logos.hunter.io/microsoft.com",
@@ -83,7 +94,7 @@ export default function AboutSection() {
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div className="order-2 md:order-1">
           <p className="text-gray-300 mb-4">
-            I&apos;m a passionate software engineer born and raised in Queens, NY with 3+ years of experience building web applications and solving
+            I&apos;m a passionate software engineer from Queens, NY with 3+ years of experience building web applications and solving
             complex problems. I specialize in full-stack development and agentic AI systems.
           </p>
           <p className="text-gray-300 mb-4">
@@ -93,8 +104,7 @@ export default function AboutSection() {
           </p>
           <p className="text-gray-300 mb-4">
             I&apos;m a huge self-learner and believe that the best way to grow is by taking on new challenges, being
-            consistent, and finishing what you start. Outside of coding, I enjoy speedcubing, photography, and taking
-            walks!
+            consistent, and finishing what you start. Outside of coding, I enjoy speedcubing and photography / photo editing.
           </p>
           <div className="md:hidden mb-6">
             <video
