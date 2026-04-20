@@ -54,10 +54,11 @@ export default function HomeSection() {
     }
   }, [displayedRole, isDeleting, roleIndex])
 
-  const handleNavigate = (section: "home" | "about" | "projects" | "skills" | "contact") => {
+  const handleNavigate = (section: "home" | "about" | "photography" | "projects" | "skills" | "contact") => {
     const pathMap = {
       home: "/",
       about: "/about",
+      photography: "/photography",
       projects: "/projects",
       skills: "/skills",
       contact: "/contact",
@@ -69,7 +70,7 @@ export default function HomeSection() {
     const sectionMap = {
       front: "about",
       back: "contact",
-      left: "home",
+      left: "photography",
       right: "projects",
       top: "skills",
       bottom: "home",

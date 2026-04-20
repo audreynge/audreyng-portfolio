@@ -17,7 +17,7 @@ const COLORS = {
 const LABELS = {
   front: "About",
   back: "Contact",
-  left: "Home",
+  left: "Photography",
   right: "Projects",
   top: "Skills",
   bottom: "Home",

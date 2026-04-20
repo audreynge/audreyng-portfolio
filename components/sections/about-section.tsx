@@ -132,7 +132,7 @@ export default function AboutSection() {
                     <img
                       src={item.companyLogo.src}
                       alt={item.companyLogo.alt}
-                      className="h-4 w-4 shrink-0 rounded-sm"
+                      className="h-5 w-5 shrink-0 rounded-sm"
                     />
                   )}
                   <span>
