@@ -106,22 +106,6 @@ export default function AboutSection() {
             I&apos;m a huge self-learner and believe that the best way to grow is by taking on new challenges, being
             consistent, and finishing what you start. Outside of coding, I enjoy speedcubing and photography / photo editing.
           </p>
-          <div className="md:hidden mb-6">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              disablePictureInPicture
-              preload="metadata"
-              className="w-full rounded-lg border border-gray-700 pointer-events-none"
-              aria-label="Speedcubing video"
-            >
-              <source src="/videos/speedcubing.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p className="text-sm text-gray-300 mt-2 text-center">I average ~11 seconds on the 3x3 ⚡️</p>
-          </div>
           <h3 className="text-xl font-semibold mb-4 mt-8">Education & Experience</h3>
           <ul className="space-y-4">
             {experienceItems.map((item) => (
