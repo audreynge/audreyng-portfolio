@@ -12,6 +12,21 @@ type PhotoItem = {
 
 const photos: PhotoItem[] = [
   {
+    src: "/images/photography/DSCF0375.JPG",
+    location: "Above the clouds 🌤️",
+    date: "May 2026",
+  },
+  {
+    src: "/images/photography/DSCF0163.JPG",
+    location: "Newport Beach, California",
+    date: "May 2026",
+  },
+  {
+    src: "/images/photography/DSCF0174.JPG",
+    location: "Newport Beach, California",
+    date: "May 2026",
+  },
+  {
     src: "/images/photography/DSC_9272.JPG",
     location: "Seattle, Washington",
     date: "Jan. 2026",
@@ -56,7 +71,7 @@ export default function PhotographySection() {
         <div className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl font-bold">Photography</h2>
           <p className="mt-3 text-gray-300">
-            I&apos;ve been taking photos on and off since 2018. I mostly shoot street photography with a Nikon D7100 / iPhone 16 Pro.
+            I&apos;ve been taking photos on and off since 2018. I mostly shoot street photography with a Fujifilm X100VI - check out more of my work on <a href="https://www.instagram.com/f5p0int6/" target="_blank" rel="noopener noreferrer" className="underline">Instagram</a>!
           </p>
         </div>
 
