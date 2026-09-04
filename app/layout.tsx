@@ -21,11 +21,6 @@ export const metadata: Metadata = {
     template: "%s | Audrey Ng",
   },
   description: "Portfolio of Audrey Ng - software engineering projects, experience, and technical skills.",
-  icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/apple-icon",
-  },
   alternates: {
     canonical: "/",
   },

@@ -6,7 +6,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react"
-import BackgroundAudio from "@/components/background-audio"
 
 type SiteShellProps = {
   children: React.ReactNode
@@ -115,8 +114,6 @@ export default function SiteShell({ children }: SiteShellProps) {
           </div>
         </div>
       </footer>
-
-      <BackgroundAudio src="/audio/start_the_neighbourhood.mp3" />
     </div>
   )
 }

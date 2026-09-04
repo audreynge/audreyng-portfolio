@@ -22,6 +22,7 @@ const experienceItems: ExperienceItem[] = [
     role: "Bachelor of Science in Computer Science",
     organization: "Northeastern University",
     period: "Sep. 2024 - May 2028",
+    description: "Concentration: Systems \n Minor: Math",
     icon: GraduationCap,
     companyLogo: {
       src: "https://logos.hunter.io/northeastern.edu",
@@ -70,7 +71,7 @@ const experienceItems: ExperienceItem[] = [
   {
     role: "Software Engineer Intern",
     organization: "Siemens",
-    team: "Technology & Innovation - Central R&D",
+    team: "Innovation Core",
     period: "Jun. 2025 - Dec. 2025",
     description:
       "Deployed a project management platform for 300+ employees with TypeScript, React, Next.js, and PostgreSQL, improving query performance ~30% and accelerating deployments by containerizing services on Rancher.",
@@ -113,7 +114,7 @@ export default function AboutSection() {
             <div className="relative z-10 w-full h-full rounded-full overflow-hidden border-4 border-gray-800 shadow-xl">
               <Image
                 src="/images/goldengatephoto.jpg"
-                alt="Audrey Ng at the Golden Gate Bridge"
+                alt="Golden Gate Bridge"
                 fill
                 className="object-cover object-[center_30%]"
               />
@@ -156,7 +157,7 @@ export default function AboutSection() {
                 <div className="mt-1 text-primary font-medium">{item.role}</div>
                 {item.team && <div className="text-sm text-gray-300">{item.team}</div>}
                 <div className="mt-1 text-xs uppercase tracking-wide text-gray-400">{item.period}</div>
-                {item.description && <p className="mt-1 text-sm text-gray-400">{item.description}</p>}
+                {item.description && <p className="mt-1 text-sm text-gray-400 whitespace-pre-line">{item.description}</p>}
               </li>
             ))}
           </ul>
